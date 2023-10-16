@@ -60,9 +60,17 @@
 弥补回调地狱和信任问题
 
 - 解决回调地狱：链式调用
-
 - 解决信任问题：控制反转的反转，让第三方提供解决问题的能力并告知解决问题的时机，仍由主线程决定函数的执行环境和如何调用
 - 解决信任问题是Promise范式的核心
+
+### Promise 的一静态些方法
+
+- Promise.all：传入 Promise[] ，返回决议后的结果数组，有任何一个被拒绝，则整体被拒绝，返回第一个拒绝的原因 （并发方法，如果想要其中一个出错就返回
+- Promise.allSettled：传入 Promise[] ，返回决议后的状态数组，{ status, value, reason } []，无论是被拒绝还是决议成功（并发方法，如果不关心是否发生错误
+- Promise.race：传入 Promise[]，返回第一个决议后的 promise实例（如果不关心决议状态，可以实现异步超时控制器
+- Promise.any：传入 Promise[]，返回第一个被兑现后的promise结果（如果关系决议状态
+- Promise.resolve
+- Promise.reject
 
 ## 3. async/await
 
@@ -80,6 +88,7 @@ run(function *asyncExec() {
     yield request(/*...*/);
     doSomething();
 })
+
 ```
 
 - run() 是一个可以自动执行生成器的辅助函数
